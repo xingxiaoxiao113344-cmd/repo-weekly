@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Preserve Unicode in Windows redirected Markdown and JSON output by using UTF-8 standard streams.
 - Add read-only GitHub repository inspection and owner repository listing.
 - Add local diagnostics and an explicitly fictional offline demo.
 - Collect recent issue, pull request, and release records into JSON snapshots.

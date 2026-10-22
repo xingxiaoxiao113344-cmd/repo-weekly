@@ -162,6 +162,12 @@ def _execute(args) -> tuple[object, str, int]:
 
 
 def main(argv: list[str] | None = None) -> int:
+    # Reports and JSON may contain Unicode even with English headings. Windows
+    # redirected streams can otherwise use a legacy code page such as cp1252.
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if callable(reconfigure):
+            reconfigure(encoding="utf-8")
     arguments = list(sys.argv[1:] if argv is None else argv)
     as_json = "--json" in arguments
     if as_json:

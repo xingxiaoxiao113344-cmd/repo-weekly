@@ -5,6 +5,8 @@ import io
 import json
 import os
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -60,6 +62,30 @@ class CLITests(unittest.TestCase):
         self.assertEqual(code, 0)
         report = json.loads(stdout)["data"]["markdown"].lower()
         self.assertRegex(report, r"fictional|synthetic|demonstration")
+
+    def run_with_legacy_output_encoding(self, arguments):
+        environment = os.environ.copy()
+        environment["PYTHONIOENCODING"] = "cp1252:strict"
+        environment["PYTHONUTF8"] = "0"
+        result = subprocess.run(
+            [sys.executable, "-m", "repo_weekly", *arguments],
+            env=environment,
+            capture_output=True,
+            timeout=15,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        output = result.stdout.decode("utf-8")
+        self.assertIn("≤", output)
+        self.assertIn("修复中文输出的编码说明", output)
+        return output
+
+    def test_markdown_output_is_utf8_when_environment_uses_cp1252(self):
+        self.run_with_legacy_output_encoding(["demo", "--lang", "en"])
+
+    def test_json_output_is_utf8_when_environment_uses_cp1252(self):
+        output = self.run_with_legacy_output_encoding(["--json", "demo", "--lang", "zh"])
+        self.assertTrue(json.loads(output)["ok"])
 
     def test_offline_doctor_reports_no_network_check(self):
         with patch.dict(os.environ, {}, clear=True), patch(
