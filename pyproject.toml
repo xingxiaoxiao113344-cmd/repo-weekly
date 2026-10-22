@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repo-weekly"
+version = "0.1.0"
+description = "Source-linked GitHub maintenance reports in English and Chinese"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+keywords = ["github", "maintainers", "weekly-report", "open-source"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development",
+]
+dependencies = []
+
+[project.scripts]
+repo-weekly = "repo_weekly.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+repo_weekly = ["data/*.json"]

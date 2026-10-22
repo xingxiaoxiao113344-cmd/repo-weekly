@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "fixture": true,
+  "repository": {
+    "full_name": "example/demo-repository",
+    "html_url": "https://github.com/example/demo-repository",
+    "description": "Fictional data for an offline demonstration."
+  },
+  "window": {"since": "2026-10-15T00:00:00Z", "until": "2026-10-22T00:00:00Z"},
+  "generated_at": "2026-10-22T00:00:00Z",
+  "issues": [
+    {"number": 12, "title": "Document Windows setup", "html_url": "https://github.com/example/demo-repository/issues/12", "state": "open", "user": {"login": "demo-contributor"}, "created_at": "2026-10-16T09:00:00Z", "updated_at": "2026-10-20T10:00:00Z", "closed_at": null},
+    {"number": 9, "title": "修复中文输出的编码说明", "html_url": "https://github.com/example/demo-repository/issues/9", "state": "closed", "user": {"login": "demo-maintainer"}, "created_at": "2026-10-10T09:00:00Z", "updated_at": "2026-10-18T12:00:00Z", "closed_at": "2026-10-18T12:00:00Z"}
+  ],
+  "pull_requests": [
+    {"number": 14, "title": "Add offline report examples", "html_url": "https://github.com/example/demo-repository/pull/14", "state": "closed", "draft": false, "user": {"login": "demo-contributor"}, "created_at": "2026-10-17T08:00:00Z", "updated_at": "2026-10-19T11:00:00Z", "closed_at": "2026-10-19T11:00:00Z", "merged_at": "2026-10-19T11:00:00Z"},
+    {"number": 15, "title": "Improve documentation links", "html_url": "https://github.com/example/demo-repository/pull/15", "state": "open", "draft": true, "user": {"login": "demo-maintainer"}, "created_at": "2026-10-20T08:00:00Z", "updated_at": "2026-10-21T08:00:00Z", "closed_at": null, "merged_at": null}
+  ],
+  "releases": [
+    {"name": "Demo release 0.1.0", "tag_name": "v0.1.0", "html_url": "https://github.com/example/demo-repository/releases/tag/v0.1.0", "published_at": "2026-10-21T12:00:00Z", "prerelease": false, "draft": false}
+  ],
+  "coverage": {"complete": true, "warnings": []}
+}
